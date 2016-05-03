@@ -32,7 +32,8 @@ script:
 after_success:
   # upload the documentation from the build with stable (automatically only actually
   # runs on the master branch, not individual PRs)
-  - travis-cargo --only stable doc-upload
+  - |
+    env; set -x; if [ "$DOC" = t ]; then travis-cargo --only stable doc-upload; fi
 
 matrix:
     allow_failures:
