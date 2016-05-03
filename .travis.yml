@@ -28,7 +28,7 @@ script:
 - travis-cargo build -- $EXTRA
 - travis-cargo test  -- $EXTRA
 - |
-    if [ "$DOC" = t ]; then travis-cargo --only stable doc; fi
+    env; set -x; if [ "$DOC" = t ]; then travis-cargo --only stable doc; fi
 after_success:
   # upload the documentation from the build with stable (automatically only actually
   # runs on the master branch, not individual PRs)
